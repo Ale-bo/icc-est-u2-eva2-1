@@ -1,5 +1,7 @@
 import java.util.List;
+import java.util.Set;
 
+import controllers.LibroController;
 import models.Book;
 
 public class App {
@@ -31,5 +33,17 @@ public class App {
                 new Book("Ciberseguridad", "Pedro León", 2023),
                 new Book("Blockchain", "Marta Ríos", 2021),
                 new Book("Machine Learning", "Cristina Gómez", 2022));
+
+      LibroController controller = new LibroController();
+        Set<Book> resultado = controller.procesarLibros(libros);
+
+        System.out.println("Libros ordenados y sin duplicados:");
+        System.out.println("──────────────────────────────────────");
+        int i = 1;
+        for (Book libro : resultado) {
+            System.out.printf("%2d. %s\n", i++, libro);
+        }
+        System.out.println("──────────────────────────────────────");
+        System.out.println("Total de libros únicos: " + resultado.size());
     }
 }
